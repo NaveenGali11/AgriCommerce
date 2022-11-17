@@ -1,0 +1,51 @@
+[
+    {
+        "id":1,
+        "name":"Friuts",
+        "image":"https://i.ibb.co/PjZYCPh/fruits-removebg-preview.png"
+
+    },
+    {
+        "id":2,
+        "name":"Vegetables",
+        "image":"https://i.ibb.co/G7tGQN4/vegetables-removebg-preview.png"
+
+    },
+    {
+        "id":3,
+        "name":"Leafy,Herbs and seasonings ",
+        "image":"https://i.ibb.co/Wn29rx0/leafy-removebg-preview.png" 
+
+    },
+    {
+        "id":4,
+        "name":"Seasonal",
+        "image":"https://i.ibb.co/pKjZnTm/seasonal-removebg-preview.png" 
+
+    },
+    {
+        "id":5,
+        "name":"Exotic",
+        "image":"https://i.ibb.co/LRk8L8t/exotic-removebg-preview.png"
+
+    },
+    {
+        "id":6,
+        "name":"Flowers",
+        "image":"https://i.ibb.co/JHJjQbt/flowers-removebg-preview.png"
+
+    },
+    {
+        "id":7,
+        "name":"Eggs",
+        "image":"https://i.ibb.co/z2H45G0/eggs-removebg-preview.png"
+
+    },
+    {
+        "id":8,
+        "name":"Milk",
+        "image":"https://i.ibb.co/6v7ZyFG/milk-removebg-preview.png"
+
+    }
+    
+]
