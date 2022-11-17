@@ -1,14 +1,14 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-const MyBookings = () => {
+const Cart = () => {
     return(
         <View>
             <Text>
-                MyBookings Page
+                Cart Page
             </Text>
         </View>
     )
 }
 
-export default MyBookings;
+export default Cart;
