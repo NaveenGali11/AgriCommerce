@@ -1,0 +1,57 @@
+[
+    {
+		"name":"Dragon Fruit",
+		"photo_url":"https://i.ibb.co/f2HGRqZ/dragon-Fruit-Image-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":1,
+		"price": 30,
+        "category":"Fruits"
+	},
+	{
+		"name":"Potatoes",
+		"photo_url":"https://www.freepngimg.com/thumb/potato/7-potato-png-images-pictures-download-thumb.png",
+		"quantity":"One container",
+		"id":2,
+		"price": 80,
+        "category":"Vegetables"
+	},
+    {
+		"name":"Celeriac",
+		"photo_url":"https://w7.pngwing.com/pngs/252/146/png-transparent-celeriac-leaf-vegetable-food-celery-herbes-leaf-vegetable-food-plant-stem-thumbnail.png",
+		"quantity":"One Bunch",
+		"id":3,
+		"price": 5,
+        "category":"Vegetables"
+	},
+    {
+        "name" : "Apple",
+        "photo_url" : "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/265px-Red_Apple.jpg",
+        "price" : 35,
+        "id":4,
+        "quantity":"1",
+        "category":"Fruits"
+    },
+    {
+        "name" : "Pineapple",
+        "photo_url" : "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Pineapple_and_cross_section.jpg/286px-Pineapple_and_cross_section.jpg",
+        "price" : 200,
+        "id":5,
+        "category":"Fruits"
+    },
+    {
+        "name":"brocoli",
+		"photo_url":"https://i.ibb.co/vB1Nv9d/brocoli-removebg-preview.png" ,
+		"quantity":"One Unit",
+		"id":6,
+		"price": 30,
+        "category":"Leaves"
+    },
+    {
+        "name":"fenugreek",
+		"photo_url":"https://i.ibb.co/W5Kj7jM/fenugreek-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":7,
+		"price": 30,
+        "category":"Leaves"
+    }
+]
