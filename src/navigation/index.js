@@ -7,6 +7,7 @@ import Profile from "../screens/Profile";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import Cart from "../screens/Cart";
+import { Text, View } from "react-native";
 
 const TabNavigator = createBottomTabNavigator();
 
@@ -27,7 +28,7 @@ const Navigator = () => {
         }}>
             <TabNavigator.Screen name="Home" component={Home} options={{tabBarIcon: ({focused,size}) => {
                 return <Ionicons name={focused ? "home" : "home-outline"} color={focused ? "#7BC142" : "white"} size={size} />
-            }}} />
+            },headerShown:false}} />
             <TabNavigator.Screen name="Cart" component={Cart} options={{tabBarIcon: ({focused,size}) => {
                 return <Ionicons name={focused ? "cart" : "cart-outline"} color={focused ? "#7BC142" : "white"} size={size} />
             }}} />

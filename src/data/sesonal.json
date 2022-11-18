@@ -1,0 +1,42 @@
+[
+    {
+        "name":"mango",
+		"photo_url":"https://i.ibb.co/BPc6d7S/mango-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":1,
+		"price": 30,
+        "category":4
+    },
+    {
+        "name":" water melon",
+		"photo_url":"https://i.ibb.co/MgB271R/water-melojn-removebg-preview.png" ,
+		"quantity":"One Unit",
+		"id":2,
+		"price": 60,
+        "category":4
+    },
+    {
+        "name":"figs",
+		"photo_url":"https://i.ibb.co/0r3Bc39/figs-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":3,
+		"price": 20,
+        "category":4
+    },
+    {
+        "name":"papaya",
+		"photo_url":"https://i.ibb.co/QHHz6wX/papaya-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":4,
+		"price": 40,
+        "category":4
+    },
+    {
+        "name":"apricots",
+		"photo_url":"https://i.ibb.co/XVYD6Cj/apricots-removebg-preview.png",
+		"quantity":"250 grams",
+		"id":5,
+		"price": 80,
+        "category":4
+    }
+]

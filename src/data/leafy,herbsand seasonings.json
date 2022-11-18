@@ -1,0 +1,66 @@
+[
+    {
+        "name":"spinach",
+		"photo_url":"https://i.ibb.co/HqM7JCW/spinach-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":1,
+		"price": 30,
+        "category":3
+    },
+    {
+        "name":"coriander",
+		"photo_url":"https://i.ibb.co/6B9zyGR/coriander-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":2,
+		"price": 40,
+        "category":3
+    },
+    {
+        "name":"mint",
+		"photo_url":"https://i.ibb.co/cTMSM0y/mint-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":3,
+		"price": 20,
+        "category":3
+    },
+    {
+        "name":"curry leaves",
+		"photo_url":"https://i.ibb.co/TMfGpWq/curry-leaves-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":4,
+		"price": 5,
+        "category":3
+    },
+    {
+        "name":"fenugreek",
+		"photo_url":"https://i.ibb.co/W5Kj7jM/fenugreek-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":5,
+		"price": 30,
+        "category":3
+    },
+    {
+        "name":"lettuce",
+		"photo_url":"https://i.ibb.co/56cfzm3/lettuce-removebg-preview.png" ,
+		"quantity":"One Unit",
+		"id":6,
+		"price": 20,
+        "category":3
+    },
+    {
+        "name":"celery",
+		"photo_url":"https://i.ibb.co/m66Qwfr/celery-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":7,
+		"price": 30,
+        "category":3
+    },
+    {
+        "name":"brocoli",
+		"photo_url":"https://i.ibb.co/vB1Nv9d/brocoli-removebg-preview.png" ,
+		"quantity":"One Unit",
+		"id":8,
+		"price": 50,
+        "category":3
+    }
+]
