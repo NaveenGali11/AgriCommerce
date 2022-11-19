@@ -1,0 +1,76 @@
+[
+    {
+        "name":"Tomatoes",
+		"image":"https://www.freepngimg.com/thumb/categories/2985.png",
+		"quantity":"One Unit",
+		"id":1,
+		"price": 5,
+        "category":"vegetable"
+    },
+    {
+        "name":"jack fruit",
+		"image":"https://i.ibb.co/Wf3qs5m/jackfruit-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":2,
+		"price": 30,
+        "category":"exotic"
+    },
+    {
+        "name":"rose",
+		"image":"https://i.ibb.co/Bw4PZk9/rose-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":3,
+		"price": 30,
+        "category":"flower"
+    },
+    {
+        "name" : "Banana",
+        "image" : "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Bananas_white_background_DS.jpg/320px-Bananas_white_background_DS.jpg",
+        "price" : 12,
+        "id":4,
+        "quantity":"1",
+        "category":"fruit"
+        
+    },
+    {
+        "name":"coriander",
+		"image":"https://i.ibb.co/6B9zyGR/coriander-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":5,
+		"price": 40,
+        "category":"leafy"
+    },
+    {
+        "name":"mint",
+		"image":"https://i.ibb.co/cTMSM0y/mint-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":6,
+		"price": 20,
+        "category":"leafy"
+    },
+    
+    {
+        "name":"marigold",
+		"image":"https://i.ibb.co/898rpXV/marigold-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":7,
+		"price": 30,
+        "category":"flower"
+    },   
+    {
+        "name":"mango",
+		"image":"https://i.ibb.co/BPc6d7S/mango-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":8,
+		"price": 30,
+        "category":"fruit"
+    },
+    {
+        "name":" water melon",
+		"image":"https://i.ibb.co/MgB271R/water-melojn-removebg-preview.png" ,
+		"quantity":"One Unit",
+		"id":9,
+		"price": 60,
+        "category":"fruit"
+    }
+]
