@@ -1,0 +1,42 @@
+[
+    {
+		"name":"jack fruit",
+		"photo_url":"https://i.ibb.co/Wf3qs5m/jackfruit-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":1,
+		"price": 30,
+        "category":5
+	},
+    {
+		"name":"kiwi",
+		"photo_url":"https://i.ibb.co/7nWRFVy/kiwi-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":2,
+		"price": 30,
+        "category":5
+	},
+    {
+		"name":"lychee",
+		"photo_url":"https://i.ibb.co/7tZ0D5z/lychee-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":3,
+		"price": 30,
+        "category":5
+	},
+    {
+		"name":"passion fruit",
+		"photo_url":"https://i.ibb.co/BCZWxhY/passion-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":4,
+		"price": 30,
+        "category":5
+	},
+    {
+		"name":"star apple",
+		"photo_url":"https://i.ibb.co/7NmRD9w/star-apple-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":5,
+		"price": 30,
+        "category":5
+	}
+]

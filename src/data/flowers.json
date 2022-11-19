@@ -1,0 +1,45 @@
+[
+    
+    {
+        "name":"rose",
+		"photo_url":"https://i.ibb.co/Bw4PZk9/rose-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":1,
+		"price": 30,
+        "category":6
+    },
+    {
+        "name":"marigold",
+		"photo_url":"https://i.ibb.co/898rpXV/marigold-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":2,
+		"price": 30,
+        "category":6
+    },
+    {
+        "name":"jasmine",
+		"photo_url":"https://i.ibb.co/cw4QrDZ/jasmine-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":3,
+		"price": 30,
+        "category":6
+    },
+    {
+        "name":"lilly",
+		"photo_url":"https://i.ibb.co/s3SwRsT/lilly-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":4,
+		"price": 30,
+        "category":6
+    },
+    {
+        "name":"lotus",
+		"photo_url":"https://i.ibb.co/pRjLPLP/lotus-removebg-preview.png",
+		"quantity":"One Unit",
+		"id":5,
+		"price": 30,
+        "category":6
+    }
+
+]
+   
