@@ -10,6 +10,9 @@ import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIc
 import Cart from "../screens/Cart";
 import { Image, Text, View } from "react-native";
 import CategoryDetailsScreen from "../screens/Home/pages/CategoryDetailsScreen";
+import AddProducts from "../screens/AddProducts";
+import CameraScreen from "../screens/Camera";
+import AdditionHelperScreen from "../screens/AdditionHelperScreen";
 
 const stackNavigator = createNativeStackNavigator();
 
@@ -24,8 +27,23 @@ const HomeNavigator = () => {
     )
 }
 
+const addProductsNavigator = createNativeStackNavigator();
+
+const AddProductsNavigator = () => {
+    return(
+        <addProductsNavigator.Navigator>
+            <addProductsNavigator.Screen name="additionHelper" component={AdditionHelperScreen} options={{headerShown:false}} />
+            <addProductsNavigator.Screen name="Camera" component={CameraScreen} />
+            <addProductsNavigator.Screen name="ProductsAdd" component={AddProducts} />
+        </addProductsNavigator.Navigator>
+    )
+}
+
 
 const TabNavigator = createBottomTabNavigator();
+
+// const userType = "User";
+const userType = "Farmer";
 
 const Navigator = () => {
     return(
@@ -45,9 +63,18 @@ const Navigator = () => {
             <TabNavigator.Screen name="Home" component={HomeNavigator} options={{tabBarIcon: ({focused,size}) => {
                 return <Ionicons name={focused ? "home" : "home-outline"} color={focused ? "#7BC142" : "white"} size={size} />
             },headerShown:false}} />
-            <TabNavigator.Screen name="Cart" component={Cart} options={{tabBarIcon: ({focused,size}) => {
-                return <Ionicons name={focused ? "cart" : "cart-outline"} color={focused ? "#7BC142" : "white"} size={size} />
-            }}} />
+            {
+                userType === "Farmer" ? (
+                    <TabNavigator.Screen name="AddProducts" component={AddProductsNavigator} options={{tabBarIcon: ({focused,size}) => {
+                        return <Ionicons name={focused ? "add" : "add-outline"} color={focused ? "#7BC142" : "white"} size={size + 10} />
+                    },headerShown:false}} />
+                ) : (
+                    <TabNavigator.Screen name="Cart" component={Cart} options={{tabBarIcon: ({focused,size}) => {
+                        return <Ionicons name={focused ? "cart" : "cart-outline"} color={focused ? "#7BC142" : "white"} size={size} />
+                    },headerShown:false}} />
+                )
+            }
+            
             <TabNavigator.Screen name="Search" component={Search} options={{tabBarIcon: ({focused,size}) => {
                 return <Ionicons name={focused ? "search" : "search-outline"} color={focused ? "#7BC142" : "white"} size={size} />
             },headerShown : false}} />

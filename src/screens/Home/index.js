@@ -15,12 +15,16 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CategoryCard from './components/CategoryCard';
 import CategoryRow from './components/CategoryRow';
 import RecommandationRow from '../../components/RecommandationRow';
+import FabComponent from './components/FabComponent';
+import { FAB } from 'react-native-paper';
 
 const Home = (props) => {
   const width = Dimensions.get('window').width;
+  const userType = "Farmer";
 
   return (
     <View>
+            <ScrollView>
         <View style={styles.topBanner}>
           <View style={styles.locationContainer}>
             <Icon name="map-marker-outline" size={29} color="white" />
@@ -45,6 +49,23 @@ const Home = (props) => {
             <RecommandationRow />
           </View>
         </View>
+        <View>
+          <Text style={styles.categoryHeading}>Suggested For You</Text>
+          <View style={styles.recommendationContainer}>
+            <RecommandationRow />
+          </View>
+        </View>
+        <View>
+          <Text style={styles.categoryHeading}>Suggested For You</Text>
+          <View style={styles.recommendationContainer}>
+            <RecommandationRow />
+          </View>
+        </View>
+    </ScrollView>
+      {
+          userType === "Farmer" ? <FabComponent /> : <FAB icon="account-question" style={{
+            position: 'absolute', zIndex: 99, elevation: 5, width: Dimensions.get('screen').width / 7, height: Dimensions.get('screen').width / 7, backgroundColor: '#00B0EB', borderRadius: 1000, display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', bottom: 20, right: 20 }} />
+      }
     </View>
   );
 };
