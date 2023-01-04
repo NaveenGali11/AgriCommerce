@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Dimensions } from "react-native";
 import { FAB, Portal, Provider } from "react-native-paper";
 
-const FabComponent = () => {
+const FabComponent = (props) => {
     const [state, setState] = useState({open : false});
     const onStateChange = ({open}) =>  setState({open});
     const {open} = state;
@@ -28,7 +28,8 @@ const FabComponent = () => {
                         {
                           icon: 'account-group',
                           label: 'Community',
-                          onPress: () => console.log('Pressed Community'),
+                          // onPress: () => console.log("Props : -",props)
+                          onPress: () => props.chatNavigation.navigate('Chat')
                         },
                       ]}
                       onStateChange={onStateChange}

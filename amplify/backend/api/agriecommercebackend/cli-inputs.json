@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "agriecommercebackend",
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2023-12-04T05:33:22.871Z",
+      "keyDescription": "AgriEcommerce"
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
+  }
+}

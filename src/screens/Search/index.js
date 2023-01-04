@@ -1,24 +1,54 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
+import { FlatList, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Searchbar } from "react-native-paper";
 import RecommandationRow from "../../components/RecommandationRow";
+import {API} from "aws-amplify";
+import * as queries from "../../graphql/queries";
+import ProductCard from "../Home/pages/components/ProductCard";
 
 const Search = () => {
+    const [products, setProducts] = useState([]);
+
+    const getProducts = async (text) => {
+        let filter = {
+            name : {
+                contains: text
+            }
+        }
+        await API.graphql({
+            query: queries.listProducts,
+            variables: {filter: filter}
+        }).then((res) => {
+            console.log("Search Product",res.data.listProducts.items);
+            setProducts(res.data.listProducts.items);
+        },(err) => {
+            console.log("ERR :_ ",err);
+        })
+    }
+
     return(
-        <View>
+        <ScrollView>
             <Text style={styles.headerText}>
                 Search for farm fresh goods
             </Text>
             <View style={styles.searchBarContainer}>
-                <Searchbar placeholder="Search" onChangeText={(e) => console.log(e)} style={styles.searchBAr} />
+                <Searchbar placeholder="Search" onChangeText={(e) => getProducts(e)} style={styles.searchBAr} />
             </View>
             <View style={styles.suggestedHeadingContainer}>
-                <Text style={styles.suggestedHeading}>Suggestions For You</Text>
+                <Text style={styles.suggestedHeading}>Search Results ({products.length})</Text>
             </View>
             <View>
-                <RecommandationRow />
+                <FlatList
+                    data={products}
+                    renderItem={({item}) => <ProductCard harvestedBy={item.userId} title={item.name} image={item.image} price={item.price} />}
+                    numColumns={2}
+                    columnWrapperStyle={{
+                        justifyContent : "space-between",
+                        marginHorizontal : 10,
+                    }}
+                />
             </View>
-        </View>
+        </ScrollView>
     )
 }
 

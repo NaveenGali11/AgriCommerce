@@ -1,23 +1,40 @@
-import React, { useState } from 'react';
-import {View,Text, StyleSheet, TouchableOpacity} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {View,Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {Dropdown} from "react-native-element-dropdown";
+import { Dropdown } from "react-native-element-dropdown";
+import { Storage,API } from "aws-amplify";
+import { Button } from 'react-native-paper';
+import * as queries from "../../graphql/queries";
 
 
 const AdditionHelperScreen = (props) => {
     const [productType, setProductType] = useState("");
     const [isFocus, setIsFocus] = useState(false);
+    const [data, setData] = useState([]);
 
+    const getCategories = async () => {
+        await API.graphql({
+            query: queries.listCategories,
+        }).then((res) => {
+            console.log("ALL Categories REsponse :- ",res.data.listCategories.items);
+            setData(res.data.listCategories.items);
+        },(err) => {
+            console.log("ERR");
+        })
+    }
+    useEffect(() => {
+        getCategories();
+    },[])
 
-    const data = [
-        { label: 'Fruits', value: 'fruit' },
-        { label: 'Vegetables', value: 'vegetable' },
-        { label: 'Leafy Vegetable', value: 'leafyvegetable' },
-        { label: 'Seasonal', value: 'seasonal' },
-        { label: 'Exotic', value: 'exotic' },
-        { label: 'Flowers', value: 'flowers' },
-        { label: 'Others', value: 'others' },
-    ];
+    // const data = [
+    //     { label: 'Fruits', value: 'fruit' },
+    //     { label: 'Vegetables', value: 'vegetable' },
+    //     { label: 'Leafy Vegetable', value: 'leafyvegetable' },
+    //     { label: 'Seasonal', value: 'seasonal' },
+    //     { label: 'Exotic', value: 'exotic' },
+    //     { label: 'Flowers', value: 'flowers' },
+    //     { label: 'Others', value: 'others' },
+    // ];
 
     return(
         <View style={styles.rootView}>
@@ -35,15 +52,16 @@ const AdditionHelperScreen = (props) => {
                     data={data}
                     search
                     maxHeight={300}
-                    labelField="label"
-                    valueField="value"
+                    labelField="name"
+                    valueField="id"
                     placeholder={!isFocus ? 'Select item' : '...'}
                     searchPlaceholder="Search..."
                     value={productType}
                     onFocus={() => setIsFocus(true)}
                     onBlur={() => setIsFocus(false)}
                     onChange={item => {
-                        setProductType(item.value)
+                        setProductType(item.id)
+                        console.log(item.name);
                         setIsFocus(false)
                     }}
                 />
@@ -52,7 +70,8 @@ const AdditionHelperScreen = (props) => {
                 productType !== "" ? (
                     <View>
                         <TouchableOpacity style={styles.methodView} onPress={() => props.navigation.navigate('Camera',{
-                            type: productType
+                            type: productType,
+                            mode: 'recognizer'
                         })}>
                             <Ionicons name='scan-circle-outline' color="#416422" size={50} style={{
                                 marginRight : 10
@@ -60,7 +79,8 @@ const AdditionHelperScreen = (props) => {
                             <Text style={styles.methodText}>Using Object Recognizer</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={{...styles.methodView,marginBottom:15}} onPress={() => props.navigation.navigate('ProductsAdd',{
-                            type: productType
+                            type: productType,
+                            mode: 'manually'
                         })}>
                             <Ionicons name='cloud-upload' color="#416422" size={50} style={{
                                 marginRight : 10

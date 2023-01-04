@@ -1,0 +1,21 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-agriecommercebackend-dev-170835-authRole",
+      "UnauthRoleArn": "arn:aws:iam::223069688751:role/amplify-agriecommercebackend-dev-170835-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::223069688751:role/amplify-agriecommercebackend-dev-170835-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-agriecommercebackend-dev-170835-deployment",
+      "UnauthRoleName": "amplify-agriecommercebackend-dev-170835-unauthRole",
+      "StackName": "amplify-agriecommercebackend-dev-170835",
+      "StackId": "arn:aws:cloudformation:us-east-1:223069688751:stack/amplify-agriecommercebackend-dev-170835/e42b75c0-7235-11ed-a0af-12a61911d817",
+      "AmplifyAppId": "d351czrxey9lyb"
+    },
+    "categories": {
+      "auth": {
+        "true": {},
+        "agriecommercebackend185c73d8": {}
+      }
+    }
+  }
+}
