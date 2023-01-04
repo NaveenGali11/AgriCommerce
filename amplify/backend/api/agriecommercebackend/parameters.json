@@ -1,0 +1,6 @@
+{
+  "AppSyncApiName": "agriecommercebackend",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2022-12-04T05:33:27.278Z"
+}

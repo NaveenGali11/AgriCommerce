@@ -1,29 +1,113 @@
-import React from "react";
-import { StyleSheet, Text, View,Image, ScrollView } from "react-native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View,Image, ScrollView, Alert, Pressable } from "react-native";
 import { List } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { Auth,Storage } from "aws-amplify";
+import ImagePicker from "react-native-image-crop-picker";
+
+const Profile = (props) => {
+    const [name, setName] = useState("");
+    const [data, setData] = useState({});
+    const [profileImage, setProfileImage] = useState("");
+
+    const getCurrentUser = () => {
+        Auth.currentAuthenticatedUser().then((res) => {
+            console.log("current user RES :- ",res);
+            setName(res.username);
+            setData(res.attributes);
+            if(res.attributes['custom:profilePicture']){
+                getImageFromStorage(res.attributes['custom:profilePicture']);
+            }else{
+                setProfileImage("https://i.ibb.co/Jm2xM0b/arImage.png");
+            }
+            // setProfileImage(res.attributes['custom:profilePicture'])
+
+        },(err) => {
+            console.log("ERR :- ");
+        })
+    }
+
+    const updateProfilePicture = async (imageName) => {
+        console.log("In Fn");
+        const user = await Auth.currentAuthenticatedUser();
+        await Auth.updateUserAttributes(user,{
+            "custom:profilePicture": imageName
+        }).then((res) => {
+            console.log("Update User Profile Picture Response :- ",res);
+            getCurrentUser();
+        },(err) => {
+            console.log("ERRor :- ",err);
+        })
+    }
+
+    const getImageFromStorage = async (image) => {
+        await Storage.get(image).then((res) => {
+            console.log("Image RES :- ",res);
+            setProfileImage(res);
+        },(err) => {
+            console.log("Image ERR :- ",err);
+        })
+    }
 
 
-const Profile = () => {
+    const uploadImageToStorage = async (imagePath) => {
+        const response = await fetch(imagePath);
+        const blob = await response.blob();
+        await Storage.put(name+'.jpg',blob,{
+            contentType: 'image/jpeg' // contentType is optional
+        }).then((res) => {
+            console.log("Upload to Storage :- ",res);
+            updateProfilePicture(res.key);
+        },(err) => {
+            console.log("Upload to Storage Error :- ",err);
+        })
+    }
+
+    const pickImage = () => {
+        ImagePicker.openPicker({
+            width: 130,
+            height : 130,
+            cropping: true,
+            cropperCircleOverlay: true,
+        }).then((res) => {
+            console.log("RESS :- ",res.path);
+            uploadImageToStorage(res.path);
+        },(err) => {
+            console.log("ERRR :- ",err);
+        })
+    }
+
+    useEffect(() => {
+        getCurrentUser()
+    },[])
+
+    const signOut = async () => {
+        try {
+            await Auth.signOut();
+        }catch(error){
+            Alert.alert("Error","Can't Sign you out at this moment!? Try Again Later");
+        }
+    }
+
     return(
         <ScrollView style={styles.rootContainer}>
             <View style={{
                 alignItems : "center",
                 marginTop : 10
             }}>
-                <View style={styles.imageView}>
-                    <Image source={{uri : "https://i.ibb.co/Jm2xM0b/arImage.png"}} style={{width : 130,height : 130}} />
-                </View>
-                <Text>Naveen</Text>
-                <Text>naveengali80@gmail.com</Text>
+                <Pressable style={styles.imageView} onPress={() => pickImage()}>
+                    <Image source={{uri : profileImage !== "" ? profileImage : "https://i.ibb.co/Jm2xM0b/arImage.png"}} style={{width : 130,height : 130}} />
+                </Pressable>
+                <Text>{name}</Text>
+                <Text>{data.email}</Text>
             </View>
                 
             <View style={styles.featuredCardsContainer}>
                 <View style={styles.featureCard}>
-                    <View style={styles.cardData}>
+                    <Pressable style={styles.cardData} onPress={() => getImageFromStorage()}>
                         <Icon name="package-variant-closed" size={30} color="black" />
                         <Text>My Orders</Text>
-                    </View>
+                    </Pressable>
                 </View>
                 <View style={styles.featureCard}>
                     <View style={styles.cardData}>
@@ -50,13 +134,13 @@ const Profile = () => {
                         fontWeight : "bold"
                     }} descriptionStyle={{
                         color : "grey"
-                    }}   />
+                    }} onPress={updateProfilePicture}  />
                     <List.Item title="Total Spends and Savings" description="Find your total spends and savings" left={() => <List.Icon icon="cash" />} style={{marginHorizontal : 10}} titleStyle={{
                         fontSize : 20,
                         fontWeight : "bold"
                     }} descriptionStyle={{
                         color : "grey"
-                    }}   />
+                    }} onPress={() => props.navigation.navigate("spends")} />
                     <List.Item title="Address Book" description="Your location book" left={() => <List.Icon icon="map-marker" />} style={{marginHorizontal : 10}} titleStyle={{
                         fontSize : 20,
                         fontWeight : "bold"
@@ -91,7 +175,7 @@ const Profile = () => {
                     <List.Item title="LogOut" left={() => <List.Icon icon="exit-to-app" />} style={{marginHorizontal : 10}} titleStyle={{
                         fontSize : 20,
                         fontWeight : "bold"
-                    }} />
+                    }} onPress={signOut} />
                 </List.Section>
             </View>
         </ScrollView>
@@ -129,8 +213,11 @@ const styles = StyleSheet.create({
     cardData : {
         flexDirection : "column",
         alignItems : "center"
-    }
-    
+    },
+    roundedProfileImage: {
+        width:100, height:100, borderWidth:3,
+        borderColor:'white', borderRadius:50
+      }
 })
 
 export default Profile;

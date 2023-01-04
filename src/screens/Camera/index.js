@@ -163,7 +163,8 @@ const CameraScreen = ({navigation,route}) => {
                             refRBSheet.current.close();
                             navigation.navigate('ProductsAdd',{
                                 name : checked,
-                                type : route.params.type
+                                type : route.params.type,
+                                mode: route.params.mode
                             })
                         }}>
                             Proceed

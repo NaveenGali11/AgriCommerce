@@ -1,0 +1,16 @@
+{
+  "resourceName": "agriecommerceimages",
+  "policyUUID": "b94f5d0c",
+  "bucketName": "agriecommercebackend0dd2c007fb894a28892fc569256",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
