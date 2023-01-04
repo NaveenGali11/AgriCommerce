@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Dimensions, FlatList, Text, View } from "react-native";
 import fruits from "../../../data/fruits.json";
 import exotic from "../../../data/exotic.json";
@@ -8,16 +8,36 @@ import seasonal from "../../../data/sesonal.json";
 import vegetables from "../../../data/vegetables.json";
 import favourites from "../../../data/favourites.json";
 import ProductCard from "./components/ProductCard";
+import {API,Storage} from "aws-amplify";
+import * as queries from "../../../graphql/queries";
 
 const CategoryDetailsScreen = ({navigation,route}) => {
-    const {id} = route.params;
-    const width = Dimensions.get('window').width;
+    const {id,name} = route.params;
+    const [items, setItems] = useState([]);
+    const [imageUrl, setImageUrl] = useState("https://via.placeholder.com/100x100.png?text=No Image Found");
+
+    const listProducts = async () => {
+        await API.graphql({
+            query: queries.listProducts,
+            variables:{filter: {category: {eq: id}}}
+        }).then((res) => {
+            console.log("LIST PROducts RESponse :_ ",res.data.listProducts.items);
+            setItems(res.data.listProducts.items);
+        },(err) => {
+            console.log("LIST Products ERROR :_ ",err);
+        })
+    }
+
+    useEffect(() => {
+        listProducts()
+    },[]);
 
     useEffect(() => {
         navigation.setOptions({
-            title : id,
+            title : name,
         })
-    },[id])
+        console.log("Params :_ ",route.params);
+    },[name])
 
     const getData = () => {
         let data;
@@ -25,13 +45,13 @@ const CategoryDetailsScreen = ({navigation,route}) => {
             case "Friuts":
                 data = fruits;
                 break;
-            case "Vegies":
+            case "Vegetables":
                 data = vegetables;
                 break;
             case "Leafys":
                 data = leafyVegetables;
                 break;
-            case "Seasonal":
+            case "Seasonals":
                 data = seasonal;
                 break;
             case "Exotic":
@@ -51,8 +71,8 @@ const CategoryDetailsScreen = ({navigation,route}) => {
             marginTop : 10
         }}>
             <FlatList
-                data={getData()}
-                renderItem={({item}) => <ProductCard title={item.name} image={item.photo_url} price={item.price} />}
+                data={items}
+                renderItem={({item}) => <ProductCard harvestedBy={item.userId} title={item.name} image={item.image} price={item.price} />}
                 numColumns={2}
                 columnWrapperStyle={{
                     justifyContent : "space-between",

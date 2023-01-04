@@ -7,8 +7,8 @@ const CategoryRow = (props) => {
     return(
         <View style={styles.rootView}>
             <FlatList
-                data={categories}
-                renderItem={({item}) => <CategoryCard image={item.image} title={item.name} navigation={props.navigation} />}
+                data={props.categories}
+                renderItem={({item}) => <CategoryCard id={item.id} image={item.image} title={item.name} navigation={props.navigation}  />}
                 horizontal
                 showsHorizontalScrollIndicator={false}
             />
