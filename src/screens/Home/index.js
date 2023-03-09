@@ -8,7 +8,7 @@ import {
   Pressable,
   ScrollView,
   StyleSheet,
-  Text,
+  Text,  
   View,
 } from 'react-native';
 import {Button} from "react-native-paper";
